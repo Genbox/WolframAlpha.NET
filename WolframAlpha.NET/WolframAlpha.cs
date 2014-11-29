@@ -48,7 +48,8 @@ namespace WolframAlphaNET
             get { return _useTls; }
             set
             {
-                _client.BaseUrl = value ? _client.BaseUrl.Replace("http://", "https://") : _client.BaseUrl.Replace("https://", "http://");
+                _client.BaseUrl = new Uri(value ? 
+                    _client.BaseUrl.ToString().Replace("http://", "https://") : _client.BaseUrl.ToString().Replace("https://", "http://"));
                 _useTls = value;
             }
         }
